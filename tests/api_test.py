@@ -9,7 +9,7 @@ class TestApi:
 
     def test_all_posts(self):
         test_client = app.app.test_client()
-        response = test_client.get("/api/posts/")
+        response = test_client.get("/api/post/")
         posts = response.get_json()
         assert response.status_code == 200
         for post in posts:
@@ -17,7 +17,7 @@ class TestApi:
 
     def test_post_pk(self):
         test_client = app.app.test_client()
-        response = test_client.get("/api/posts/1")
+        response = test_client.get("/api/post/1")
         post = response.get_json()
         assert response.status_code == 200
         assert set(post.keys()) == self.post_keys, "Неправильные ключи у словаря"
